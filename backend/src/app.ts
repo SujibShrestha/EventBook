@@ -5,6 +5,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
 import { errorHandler, notFound } from "./middleware/error.middleware.js";
+import authRouter from "./routes/auth.routes.js";
 
 const app:Application = express()
 
@@ -17,6 +18,9 @@ app.use(
     stream: { write: (message: string) => logger.info(message.trim()) },
   })
 );
+
+// Routes
+app.use("/api/v1/auth",authRouter);
 
 app.get("/",(req:Request,res:Response)=>{
     res.status(200).json({
