@@ -1,5 +1,5 @@
 import { prisma } from "../config/db.js";
-import { Prisma } from "../generated/client.js";
+import { promoteWaitlist } from "../lib/waitlist.js";
 import type { CreateEventInput, ListEventsQuery, UpdateEventInput } from "../validators/event.validator.js";
 
 type EventUpdateData = {
@@ -15,8 +15,6 @@ type LockedEventRow = {
   id: string;
   totalSeats: number;
 };
-
-type TransactionClient = Prisma.TransactionClient;
 
 export const createEvent = async (input: CreateEventInput) => {
   return prisma.event.create({
@@ -113,50 +111,6 @@ export const updateEvent = async (id: string, input: UpdateEventInput) => {
     return event;
   });
 };
-
-async function promoteWaitlist(tx: TransactionClient, eventId: string, totalSeats: number) {
-  const confirmedCount = await tx.booking.count({
-    where: {
-      eventId,
-      status: "CONFIRMED",
-    },
-  });
-
-  const availableSeats = totalSeats - confirmedCount;
-
-  if (availableSeats <= 0) {
-    return;
-  }
-
-  const waitlistedBookings = await tx.booking.findMany({
-    where: {
-      eventId,
-      status: "WAITLISTED",
-    },
-    orderBy: {
-      createdAt: "asc",
-    },
-    take: availableSeats,
-    select: {
-      id: true,
-    },
-  });
-
-  if (waitlistedBookings.length === 0) {
-    return;
-  }
-
-  await tx.booking.updateMany({
-    where: {
-      id: {
-        in: waitlistedBookings.map((booking) => booking.id),
-      },
-    },
-    data: {
-      status: "CONFIRMED",
-    },
-  });
-}
 
 export const deleteEvent = async (id: string) => {
   await getEventById(id);
