@@ -1,5 +1,14 @@
 import { prisma } from "../config/db.js";
-import type { CreateEventInput, ListEventsQuery } from "../validators/event.validator.js";
+import type { CreateEventInput, ListEventsQuery, UpdateEventInput } from "../validators/event.validator.js";
+
+type EventUpdateData = {
+  title?: string;
+  description?: string;
+  startsAt?: Date;
+  venue?: string;
+  totalSeats?: number;
+  imageUrl?: string | null;
+};
 
 export const createEvent = async (input: CreateEventInput) => {
   return prisma.event.create({
@@ -35,4 +44,42 @@ export const listEvents = async ({ page, limit }: ListEventsQuery) => {
       totalPages: Math.ceil(total / limit),
     },
   };
+};
+
+export const getEventById = async (id: string) => {
+  const event = await prisma.event.findUnique({
+    where: { id },
+  });
+
+  if (!event) {
+    throw new Error("Event not found");
+  }
+
+  return event;
+};
+
+export const updateEvent = async (id: string, input: UpdateEventInput) => {
+  await getEventById(id);
+
+  const data: EventUpdateData = {};
+
+  if (input.title !== undefined) data.title = input.title;
+  if (input.description !== undefined) data.description = input.description;
+  if (input.startsAt !== undefined) data.startsAt = input.startsAt;
+  if (input.venue !== undefined) data.venue = input.venue;
+  if (input.totalSeats !== undefined) data.totalSeats = input.totalSeats;
+  if (input.imageUrl !== undefined) data.imageUrl = input.imageUrl ?? null;
+
+  return prisma.event.update({
+    where: { id },
+    data,
+  });
+};
+
+export const deleteEvent = async (id: string) => {
+  await getEventById(id);
+
+  await prisma.event.delete({
+    where: { id },
+  });
 };

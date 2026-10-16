@@ -21,5 +21,19 @@ export const listEventsQuerySchema = z
   })
   .strict();
 
+export const eventIdParamsSchema = z
+  .object({
+    id: z.string().uuid("Invalid event id"),
+  })
+  .strict();
+
+export const updateEventSchema = createEventSchema
+  .partial()
+  .refine((value) => Object.keys(value).length > 0, {
+    message: "At least one field is required",
+  });
+
 export type CreateEventInput = z.infer<typeof createEventSchema>;
 export type ListEventsQuery = z.infer<typeof listEventsQuerySchema>;
+export type EventIdParams = z.infer<typeof eventIdParamsSchema>;
+export type UpdateEventInput = z.infer<typeof updateEventSchema>;
