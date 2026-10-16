@@ -11,3 +11,54 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum BookingStatus {
+  CONFIRMED
+  WAITLISTED
+  CANCELLED
+}
+
+model User {
+  id           String    @id @default(uuid()) @db.Uuid
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         Role      @default(USER)
+  createdAt    DateTime  @default(now())
+  bookings     Booking[]
+}
+
+
+model Event {
+  id          String    @id @default(uuid()) @db.Uuid
+  title       String
+  description String
+  startsAt    DateTime
+  venue       String
+  imageUrl    String?
+  totalSeats  Int
+  createdAt   DateTime  @default(now())
+  bookings    Booking[]
+
+  @@index([startsAt])
+}
+
+
+model Booking {
+  id          String        @id @default(uuid()) @db.Uuid
+  userId      String        @db.Uuid
+  eventId     String        @db.Uuid
+  status      BookingStatus @default(CONFIRMED)
+  createdAt   DateTime      @default(now())
+  cancelledAt DateTime?
+  user        User          @relation(fields: [userId], references: [id])
+  event       Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@index([eventId, status,createdAt])
+  @@index([userId])
+}
