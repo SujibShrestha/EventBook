@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import { loginSchema, registerSchema } from "../validators/auth.validator.js";
-import { registerUser } from "../services/auth.service.js";
+import { loginUser, registerUser } from "../services/auth.service.js";
 import type { LoginInput, RegisterInput } from "../validators/auth.validator.js";
 import logger from "../config/logger.js";
 
@@ -21,6 +21,7 @@ export async function register(req: Request, res: Response) {
     });
 
   } catch (error) {
+  logger.error(`Registration error: ${(error as Error).message}`);
    return res.status(400).json({ error: "INVALID_INPUT", message: (error as Error).message });
    
   }
@@ -28,8 +29,28 @@ export async function register(req: Request, res: Response) {
 }
 
 export async function login(req: Request, res: Response) {
-  // const result = await loginUser(req.body as LoginInput);
-  // res.status(200).json(result);
+  try {
+    const { email, password } = loginSchema.parse(req.body);
+    const result = await loginUser({ email, password } as LoginInput);
+    if (!result) {
+      return res.status(401).json({
+        error: "INVALID_CREDENTIALS",
+        message: "Invalid email or password",
+      });
+    }
+
+    logger.info(`User logged in: ${result.user.email}`);
+
+    return res.status(200).json({
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    return res.status(401).json({
+      error: "INVALID_CREDENTIALS",
+      message: (error as Error).message,
+    });
+  }
 }
 
 export async function me(req: Request, res: Response) {
