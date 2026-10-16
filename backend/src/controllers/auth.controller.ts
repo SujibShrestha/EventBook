@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import { loginSchema, registerSchema } from "../validators/auth.validator.js";
-import { loginUser, registerUser } from "../services/auth.service.js";
+import { getCurrentUser, loginUser, registerUser } from "../services/auth.service.js";
 import type { LoginInput, RegisterInput } from "../validators/auth.validator.js";
 import logger from "../config/logger.js";
 
@@ -54,11 +54,38 @@ export async function login(req: Request, res: Response) {
 }
 
 export async function me(req: Request, res: Response) {
-  // const user = await getCurrentUser(req.user!.id);
-  // res.status(200).json({ user });
+  try {
+    if (!req.user) {
+      return res.status(401).json({
+        error: "UNAUTHORIZED",
+        message: "Unauthorized",
+      });
+    }
+
+    const user = await getCurrentUser(req.user.id);
+    if (!user) {
+      return res.status(404).json({
+        error: "USER_NOT_FOUND",
+        message: "User not found",
+      });
+    }
+
+    logger.info(`Fetched current user: ${user.email}`);
+
+    return res.status(200).json({
+      success: true,
+      data: { user },
+    });
+  } catch (error) {
+    return res.status(401).json({
+      error: "UNAUTHORIZED",
+      message: (error as Error).message,
+    });
+  }
 }
 
-export function logout(_req: Request, res: Response) {
+export function logout(req: Request, res: Response) {
+  logger.info(`User logged out: ${req.user?.id ?? "unknown"}`);
   // Logout is stateless for JWT auth; the client deletes its token.
   res.status(204).send();
 }
