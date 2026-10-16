@@ -1,17 +1,31 @@
-import express,  {type Application } from "express"
+import express,  {type Application, type Request, type Response } from "express"
 import { prisma } from "./config/db.js"
+import logger from './config/logger.js'
+import helmet from "helmet";
+import morgan from "morgan";
+import cors from "cors";
+import { errorHandler, notFound } from "./middleware/error.middleware.js";
 
 const app:Application = express()
 
+// Middleware
+app.use(helmet());
+app.use(cors({ origin: process.env.CORS_ORIGIN }));
+app.use(express.json());
+app.use(
+  morgan('combined', {
+    stream: { write: (message: string) => logger.info(message.trim()) },
+  })
+);
 
-app.get("/",(req,res)=>{
+app.get("/",(req:Request,res:Response)=>{
     res.status(200).json({
         success: true,
         message: "Server is running"
     })
 })
-
-app.get("/health", async (req,res)=>{
+    
+app.get("/health", async (req:Request,res:Response)=>{
     try {
         await prisma.$queryRaw`SELECT 1`
         res.status(200).json({ success: true, db: "up" })
@@ -19,5 +33,8 @@ app.get("/health", async (req,res)=>{
         res.status(503).json({ success: false, db: "down" })
     }
 })
+
+app.use(notFound);
+app.use(errorHandler);
 
 export default app
