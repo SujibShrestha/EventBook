@@ -6,6 +6,8 @@ import morgan from "morgan";
 import cors from "cors";
 import { errorHandler, notFound } from "./middleware/error.middleware.js";
 import authRouter from "./routes/auth.routes.js";
+import eventRouter from "./routes/event.routes.js";
+import bookingRouter from "./routes/booking.routes.js";
 
 const app:Application = express()
 
@@ -21,6 +23,8 @@ app.use(
 
 // Routes
 app.use("/api/v1/auth",authRouter);
+app.use("/api/v1/events", eventRouter);
+app.use("/api/v1", bookingRouter);
 
 app.get("/",(req:Request,res:Response)=>{
     res.status(200).json({
