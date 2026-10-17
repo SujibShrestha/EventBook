@@ -16,8 +16,17 @@ type LockedEventRow = {
   totalSeats: number;
 };
 
+const withSeatAvailability = <TEvent extends { totalSeats: number }>(
+  event: TEvent,
+  confirmedBookings: number,
+) => ({
+  ...event,
+  confirmedBookings,
+  availableSeats: Math.max(event.totalSeats - confirmedBookings, 0),
+});
+
 export const createEvent = async (input: CreateEventInput) => {
-  return prisma.event.create({
+  const event = await prisma.event.create({
     data: {
       title: input.title,
       description: input.description,
@@ -27,6 +36,8 @@ export const createEvent = async (input: CreateEventInput) => {
       imageUrl: input.imageUrl ?? null,
     },
   });
+
+  return withSeatAvailability(event, 0);
 };
 
 export const listEvents = async ({ page, limit }: ListEventsQuery) => {
@@ -41,8 +52,21 @@ export const listEvents = async ({ page, limit }: ListEventsQuery) => {
     prisma.event.count(),
   ]);
 
+  const eventIds = events.map((event) => event.id);
+  const confirmedCounts = eventIds.length
+    ? await prisma.booking.groupBy({
+        by: ["eventId"],
+        where: {
+          eventId: { in: eventIds },
+          status: "CONFIRMED",
+        },
+        _count: { _all: true },
+      })
+    : [];
+  const confirmedByEventId = new Map(confirmedCounts.map((count) => [count.eventId, count._count._all]));
+
   return {
-    events,
+    events: events.map((event) => withSeatAvailability(event, confirmedByEventId.get(event.id) ?? 0)),
     pagination: {
       page,
       limit,
@@ -61,7 +85,14 @@ export const getEventById = async (id: string) => {
     throw new Error("Event not found");
   }
 
-  return event;
+  const confirmedBookings = await prisma.booking.count({
+    where: {
+      eventId: id,
+      status: "CONFIRMED",
+    },
+  });
+
+  return withSeatAvailability(event, confirmedBookings);
 };
 
 export const updateEvent = async (id: string, input: UpdateEventInput) => {
@@ -108,7 +139,14 @@ export const updateEvent = async (id: string, input: UpdateEventInput) => {
 
     await promoteWaitlist(tx, id, event.totalSeats);
 
-    return event;
+    const nextConfirmedCount = await tx.booking.count({
+      where: {
+        eventId: id,
+        status: "CONFIRMED",
+      },
+    });
+
+    return withSeatAvailability(event, nextConfirmedCount);
   });
 };
 

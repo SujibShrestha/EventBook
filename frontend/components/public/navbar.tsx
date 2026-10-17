@@ -88,6 +88,21 @@ export function SiteNavbar() {
           ) : null}
         </div>
       </div>
+
+      <nav className="mx-auto flex max-w-7xl gap-4 overflow-x-auto border-t border-slate-100 px-4 py-2 text-sm font-semibold text-slate-600 md:hidden">
+        <Link href="/" className="shrink-0 text-indigo-700">
+          Browse Events
+        </Link>
+        <Link href="/bookings" className="shrink-0 transition-colors hover:text-slate-950">
+          My Bookings
+        </Link>
+        {isReady && user?.role === "ADMIN" ? (
+          <Link href="/admin/events" className="inline-flex shrink-0 items-center gap-2 transition-colors hover:text-slate-950">
+            <LayoutDashboard className="size-4" aria-hidden="true" />
+            Admin
+          </Link>
+        ) : null}
+      </nav>
     </header>
   )
 }

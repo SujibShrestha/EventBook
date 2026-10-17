@@ -7,6 +7,8 @@ export type PublicEvent = {
   startsAt: string
   venue: string
   totalSeats: number
+  confirmedBookings: number
+  availableSeats: number
   imageUrl: string | null
   createdAt: string
 }

@@ -1,7 +1,7 @@
 "use client"
 
 import type { FormEvent } from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { AlertCircle, ArrowRight, Eye, EyeOff, LockKeyhole, Mail, ShieldCheck, Ticket, X } from "lucide-react"
@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { api } from "@/src/lib/api"
 import { getApiErrorMessage } from "@/src/lib/api-error"
-import { normalizeAuthPayload, storeAuth, type AuthApiResponse } from "@/src/lib/auth-storage"
+import { getStoredUser, normalizeAuthPayload, storeAuth, type AuthApiResponse } from "@/src/lib/auth-storage"
 import { getFirstValidationMessage, loginSchema } from "@/src/validators/auth"
 
 export default function LoginPage() {
@@ -25,6 +25,14 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  useEffect(() => {
+    const user = getStoredUser()
+
+    if (user) {
+      router.replace(user.role === "ADMIN" ? "/admin/events" : "/")
+    }
+  }, [router])
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()

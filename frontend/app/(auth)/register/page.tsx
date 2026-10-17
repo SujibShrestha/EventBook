@@ -1,7 +1,7 @@
 "use client"
 
 import type { FormEvent } from "react"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
@@ -25,7 +25,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { api } from "@/src/lib/api"
 import { getApiErrorMessage } from "@/src/lib/api-error"
-import { normalizeAuthPayload, storeAuth, type AuthApiResponse } from "@/src/lib/auth-storage"
+import { getStoredUser, normalizeAuthPayload, storeAuth, type AuthApiResponse } from "@/src/lib/auth-storage"
 import { getFirstValidationMessage, registerSchema } from "@/src/validators/auth"
 
 function getPasswordStrength(password: string) {
@@ -51,6 +51,14 @@ export default function RegisterPage() {
 
   const passwordStrength = useMemo(() => getPasswordStrength(password), [password])
   const passwordsMatch = confirmPassword.length > 0 && password === confirmPassword
+
+  useEffect(() => {
+    const user = getStoredUser()
+
+    if (user) {
+      router.replace(user.role === "ADMIN" ? "/admin/events" : "/")
+    }
+  }, [router])
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()

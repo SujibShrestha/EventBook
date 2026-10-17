@@ -95,7 +95,7 @@ function EventCard({ event }: { event: PublicEvent }) {
           {isUpcoming ? "Open booking" : "Past event"}
         </span>
         <span className="absolute bottom-3 left-3 rounded-md bg-slate-950/70 px-2 py-1 text-xs font-semibold text-white backdrop-blur">
-          {event.totalSeats} seats
+          {event.availableSeats} seats left
         </span>
       </div>
 

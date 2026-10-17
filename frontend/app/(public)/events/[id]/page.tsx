@@ -125,26 +125,28 @@ export default async function EventDetailsPage({ params }: EventDetailsPageProps
             <p className="mt-5 whitespace-pre-line text-base leading-8 text-slate-600">{event.description}</p>
           </section>
 
-          <section className="grid gap-4 md:grid-cols-3">
+          <section className="grid gap-4 md:grid-cols-2">
             <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
               <Users className="size-6 text-emerald-600" aria-hidden="true" />
               <h3 className="mt-3 font-semibold text-slate-950">Capacity managed</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-600">{event.totalSeats} total seats with waitlist support.</p>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                {event.availableSeats} of {event.totalSeats} seats available.
+              </p>
             </div>
             <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
               <CheckCircle2 className="size-6 text-indigo-600" aria-hidden="true" />
               <h3 className="mt-3 font-semibold text-slate-950">Instant confirmation</h3>
               <p className="mt-2 text-sm leading-6 text-slate-600">Confirmed bookings return immediately after checkout.</p>
             </div>
-            <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-              <ShieldCheck className="size-6 text-amber-600" aria-hidden="true" />
-              <h3 className="mt-3 font-semibold text-slate-950">Protected rules</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-600">The backend prevents duplicate active bookings.</p>
-            </div>
           </section>
         </div>
 
-        <BookEventPanel eventId={event.id} eventStarted={eventStarted} totalSeats={event.totalSeats} />
+        <BookEventPanel
+          eventId={event.id}
+          eventStarted={eventStarted}
+          totalSeats={event.totalSeats}
+          availableSeats={event.availableSeats}
+        />
       </section>
     </>
   )
