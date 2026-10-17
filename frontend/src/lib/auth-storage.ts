@@ -46,3 +46,26 @@ export function storeAuth(payload: AuthPayload, remember: boolean) {
     window.localStorage.removeItem("eventbook_user")
   }
 }
+
+export function getStoredToken() {
+  return window.localStorage.getItem("eventbook_token") ?? window.sessionStorage.getItem("eventbook_token")
+}
+
+export function getStoredUser() {
+  const rawUser = window.localStorage.getItem("eventbook_user") ?? window.sessionStorage.getItem("eventbook_user")
+
+  if (!rawUser) return null
+
+  try {
+    return JSON.parse(rawUser) as AuthUser
+  } catch {
+    return null
+  }
+}
+
+export function clearAuth() {
+  window.localStorage.removeItem("eventbook_token")
+  window.localStorage.removeItem("eventbook_user")
+  window.sessionStorage.removeItem("eventbook_token")
+  window.sessionStorage.removeItem("eventbook_user")
+}

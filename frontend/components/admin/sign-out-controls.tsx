@@ -4,19 +4,13 @@ import { useRouter } from "next/navigation"
 import { LogOut } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-
-function clearStoredAuth() {
-  window.localStorage.removeItem("eventbook_token")
-  window.localStorage.removeItem("eventbook_user")
-  window.sessionStorage.removeItem("eventbook_token")
-  window.sessionStorage.removeItem("eventbook_user")
-}
+import { clearAuth } from "@/src/lib/auth-storage"
 
 export function SignOutButton({ className = "" }: { className?: string }) {
   const router = useRouter()
 
   function handleLogout() {
-    clearStoredAuth()
+    clearAuth()
     router.push("/login")
   }
 

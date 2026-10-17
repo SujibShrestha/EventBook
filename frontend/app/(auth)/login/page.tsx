@@ -47,7 +47,7 @@ export default function LoginPage() {
       const payload = normalizeAuthPayload(response.data)
 
       storeAuth(payload, remember)
-      router.push("/")
+      router.push(payload.user.role === "ADMIN" ? "/admin/events" : "/")
     } catch (submitError) {
       setError(getApiErrorMessage(submitError, "Invalid email or password. Please try again."))
     } finally {

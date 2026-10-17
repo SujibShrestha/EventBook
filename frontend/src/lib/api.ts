@@ -1,5 +1,7 @@
 import axios from "axios"
 
+import { getStoredToken } from "@/src/lib/auth-storage"
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000/api/v1"
 
 export const api = axios.create({
@@ -14,8 +16,7 @@ api.interceptors.request.use((config) => {
     return config
   }
 
-  const token =
-    window.localStorage.getItem("eventbook_token") ?? window.sessionStorage.getItem("eventbook_token")
+  const token = getStoredToken()
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`

@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { ArrowRight, CalendarDays, MapPin, Search } from "lucide-react"
 
-import { SiteNavbar } from "@/components/public/navbar"
 import { listPublicEvents, type PublicEvent } from "@/src/lib/events-api"
 
 export const instant = false
@@ -140,9 +139,7 @@ export default async function Home({ searchParams }: HomePageProps) {
   const visibleEvents = events.filter((event) => eventMatchesQuery(event, query))
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-950">
-      <SiteNavbar />
-
+    <>
       <section className="border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-5xl px-4 py-12 text-center sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-indigo-700">
@@ -263,6 +260,6 @@ export default async function Home({ searchParams }: HomePageProps) {
           </div>
         </div>
       </section>
-    </main>
+    </>
   )
 }
