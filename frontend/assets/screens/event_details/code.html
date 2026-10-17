@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>EventBook</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary":"#565e74","primary-fixed":"#e2dfff","primary-fixed-dim":"#c3c0ff","on-primary":"#ffffff","on-primary-fixed-variant":"#3323cc","on-secondary-container":"#5c647a","on-error-container":"#93000a","surface-container-high":"#e6e8ea","on-surface-variant":"#464555","primary-container":"#4f46e5","surface-dim":"#d8dadc","on-primary-fixed":"#0f0069","outline":"#777587","tertiary":"#005338","primary":"#3525cd","on-error":"#ffffff","on-primary-container":"#dad7ff","surface-container-low":"#f2f4f6","on-tertiary-fixed-variant":"#005137","secondary-fixed":"#dae2fd","error":"#ba1a1a","surface-variant":"#e0e3e5","surface-bright":"#f7f9fb","on-secondary-fixed":"#131b2e","on-background":"#191c1e","background":"#f7f9fb","secondary-fixed-dim":"#bec6e0","on-secondary-fixed-variant":"#3f465c","inverse-surface":"#2d3133","error-container":"#ffdad6","inverse-primary":"#c3c0ff","on-tertiary-fixed":"#002114","surface-container-lowest":"#ffffff","surface":"#f7f9fb","on-surface":"#191c1e","on-secondary":"#ffffff","tertiary-fixed":"#85f8c4","surface-container-highest":"#e0e3e5","secondary-container":"#dae2fd","on-tertiary":"#ffffff","inverse-on-surface":"#eff1f3","surface-container":"#eceef0","tertiary-container":"#006e4c","tertiary-fixed-dim":"#68dba9","on-tertiary-container":"#7df1bd","surface-tint":"#4d44e3","outline-variant":"#c7c4d8"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"margin":"2rem","space-md":"1rem","space-xl":"2rem","margin-mobile":"1rem","gutter":"1.5rem","space-lg":"1.5rem","space-xs":"0.25rem","gutter-mobile":"1rem","space-sm":"0.5rem"},"fontFamily":{"label-sm":["Inter"],"display-hero-mobile":["Inter"],"display-hero":["Inter"],"label-md":["Inter"],"body-sm":["Inter"],"headline-lg-mobile":["Inter"],"title-md":["Inter"],"headline-md":["Inter"],"headline-lg":["Inter"],"body-md":["Inter"],"badge":["Inter"],"body-lg":["Inter"],"headline-sm":["Inter"]},"fontSize":{"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"display-hero-mobile":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"800"}],"display-hero":["48px",{"lineHeight":"56px","letterSpacing":"-0.025em","fontWeight":"800"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"500"}],"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0.005em","fontWeight":"400"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"700"}],"title-md":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"badge":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"26px","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 max-w-7xl mx-auto px-margin flex items-center justify-between"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm" data-path="browse-events" href="#"><img alt="EventBook Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wxc71srGrSxUjX58XgTT9XVw-JUOMoDU7t9qEPwbTO9rVdy1BD7bw1DXyjnUV7Lrf4MHMGGTAE4YDqso0x4Ctaj121EH0A9bc5VxRSTPHARH9OevPljsE7rwQQl_DSAAgh9Q3n8oyJrfuoc6O52qfj4Nd8hMK1gjfrZ3S-RzqLVYiFPhxH99HWaVWW9I5dzlCtw4rURTdoB73q1abGIAzussTZa6DBvRuk1QjnAIPzyAsAVFlOPt69aw"/><span class="font-title-md text-title-md text-on-surface font-bold tracking-tight">EventBook</span></a><nav class="hidden md:flex items-center gap-space-md" data-active-classes="text-primary font-title-md"><a class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" data-path="browse-events" href="#">Browse Events</a><a class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" data-path="my-bookings" href="#">My Bookings</a><a class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" data-path="help-support" href="#">Help</a></nav></div><div class="flex items-center gap-space-md"><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center rounded-lg hover:bg-surface-container-high" type="button"><span class="material-symbols-outlined text-[20px]">search</span></button><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center rounded-lg hover:bg-surface-container-high" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span></button><div class="relative group"><button class="flex items-center gap-space-xs focus:outline-none" type="button"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_1px_2px_rgba(0,0,0,0.05)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9utRlYt4a3xkUbybqvOL1TCjVnODCUuG5BJDD_u1AWMIURbBBNMAzsQboyAb162fNIBWZRGfvSesmcWv-b3x1p8SPCyteWTecPHfpDgOz3OyDUxu5JTahwczmFnoCYrAno20TAPJcIAD5Lb0izDk63ocIxlL9bdAw_sq3QITF9MPAlo--S9wnv8gCyE9IVBYeOOXi-zh2DYZbcsfHSFMKiXvM0e6SZ5AV1jZFWmy82bMDxHwmrG4I"/><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></button><div class="absolute right-0 top-full mt-space-xs w-48 bg-surface-container-lowest rounded-xl shadow-[0_10px_15px_-3px_rgba(15,23,42,0.08)] py-space-xs hidden group-hover:block transition-all"><div class="px-space-md py-space-xs"><p class="font-label-md text-label-md text-on-surface font-semibold">Sarah Jenkins</p><p class="font-body-sm text-body-sm text-on-surface-variant">sarah@example.com</p></div><div class="my-space-xs bg-surface-container-high h-[1px]"></div><a class="flex items-center gap-space-xs px-space-md py-space-xs font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface" data-path="my-bookings" href="#"><span class="material-symbols-outlined text-[18px]">confirmation_number</span>My Bookings</a><a class="flex items-center gap-space-xs px-space-md py-space-xs font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface" data-path="events-dashboard" href="#"><span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>Admin Portal</a><div class="my-space-xs bg-surface-container-high h-[1px]"></div><a class="flex items-center gap-space-xs px-space-md py-space-xs font-body-md text-body-md text-error hover:bg-error-container hover:text-on-error-container" data-path="login" href="#"><span class="material-symbols-outlined text-[18px]">logout</span>Logout</a></div></div><div class="hidden lg:flex items-center gap-space-sm pl-space-sm"><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="login" href="#">Log in</a><a class="px-space-md py-space-xs rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-all shadow-[0_1px_2px_0_rgba(15,23,42,0.05)]" data-path="signup" href="#">Sign up</a></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-64px)]"><div class="flex flex-col w-full">
+<!-- Top Breadcrumb & Quick Actions Bar -->
+<section class="max-w-7xl mx-auto w-full px-margin pt-6 pb-4">
+<div class="flex items-center justify-between">
+<a class="inline-flex items-center gap-space-xs font-label-md text-label-md text-primary hover:text-on-primary-fixed-variant transition-colors group" data-path="browse-events" href="#">
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+        Back to events
+      </a>
+<div class="flex items-center gap-space-sm">
+<button class="inline-flex items-center gap-space-xs px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">share</span>
+          Share
+        </button>
+<button class="inline-flex items-center gap-space-xs px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">bookmark_border</span>
+          Save
+        </button>
+</div>
+</div>
+</section>
+<!-- Main 2-Column Section -->
+<section class="max-w-7xl mx-auto w-full px-margin pb-16">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- LEFT COLUMN (~65% / 8 of 12 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Header & Micro-meta -->
+<div class="space-y-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-badge text-badge tracking-wider uppercase">
+              Design Systems
+            </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-badge text-badge">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+              In-Person &amp; Hands-on
+            </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-badge text-badge">
+              Masterclass 2025
+            </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">
+            Modern Product Design &amp; Design Systems Workshop 2025
+          </h1>
+<!-- Meta Icons Strip -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 pt-2">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+</div>
+<div class="min-w-0">
+<p class="font-badge text-badge text-on-surface-variant uppercase">Date</p>
+<p class="font-label-md text-label-md text-on-surface font-semibold truncate">Sat, Nov 2, 2025</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="w-9 h-9 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</div>
+<div class="min-w-0">
+<p class="font-badge text-badge text-on-surface-variant uppercase">Time</p>
+<p class="font-label-md text-label-md text-on-surface font-semibold truncate">10:30 AM – 4:30 PM PST</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-lowest shadow-sm sm:col-span-2 md:col-span-1">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+</div>
+<div class="min-w-0">
+<p class="font-badge text-badge text-on-surface-variant uppercase">Venue</p>
+<p class="font-label-md text-label-md text-on-surface font-semibold truncate">DesignHub SOMA • SF</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Featured Media Banner -->
+<div class="relative w-full h-[360px] md:h-[420px] rounded-2xl overflow-hidden shadow-sm group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" data-alt="An expansive modern architectural interior of an innovation laboratory in San Francisco with attendees interacting around ergonomic modular workstations, ambient indigo and slate architectural backlighting, warm morning sunlight spilling through tall floor-to-ceiling glass windows, displaying high-end Figma UI components on multiple sleek Retina monitors, ultra-crisp editorial corporate photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA86cjCLKDV7IQL_eF0IEi__PqzQe4058-HZnx1ZTv1Y9f76T7Du4qpDGCLqLrZs7wfat7GWTl-Vzk8-hZYPzWD4W2W8aE5jYTMJEnHqtTeAmzGGAXGryD59mwPOXgzIGys5_z-cir0v0Fd9g5dGRpRp-7v2jRrB0A7vQqrLt93503Nf2UP-HPA9P7rOMmRmFjCLdbhdHPuiuvHSu2gGtihZHUCBSKYFWzS7sq0XLvThMAuOIofguUL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-inverse-surface/20 to-transparent"></div>
+<div class="absolute top-4 left-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest/95 backdrop-blur-md text-primary font-label-sm text-label-sm shadow-md">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+              Featured Workshop
+            </span>
+</div>
+<div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-on-primary">
+<div>
+<p class="font-title-md text-title-md font-bold drop-shadow-sm">Immersive Studio &amp; Figma Sandbox</p>
+<p class="font-body-sm text-body-sm text-inverse-on-surface/90">Includes catered networking lunch &amp; physical workbook kit</p>
+</div>
+<span class="hidden sm:inline-flex items-center gap-1 text-label-sm font-label-sm bg-surface-container-lowest/20 backdrop-blur-sm px-3 py-1.5 rounded-lg text-on-primary">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+              Accredited CPD
+            </span>
+</div>
+</div>
+<!-- About Section -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 md:p-8 shadow-sm space-y-6">
+<div class="space-y-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">About This Event</h2>
+<div class="w-12 h-1 bg-primary rounded-full"></div>
+</div>
+<div class="space-y-4 font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+<p>
+              Join 50 senior product designers, UI engineers, and design system leads for an intensive six-hour, deep-dive architectural workshop in San Francisco. Transition from static component libraries to bulletproof, token-driven multi-platform design ecosystems that scale cleanly across iOS, Android, and web frontends.
+            </p>
+<p>
+              Through real-time collaborative Figma labs and paired architectural challenges, Elena Rostova will guide you through orchestrating multi-brand variables, writing composable documentation, establishing design governance councils, and bridging the code handover friction with zero token drift.
+            </p>
+</div>
+<!-- Key Learnings Matrix -->
+<div class="pt-2">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold mb-4">What You Will Master</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex items-start gap-3 p-4 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0">schema</span>
+<div>
+<h4 class="font-label-md text-label-md font-semibold text-on-surface">Design Tokens 2.0</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Semantic variable structures, light/dark aliases, and cross-platform JSON transforms using Style Dictionary.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-4 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0">token</span>
+<div>
+<h4 class="font-label-md text-label-md font-semibold text-on-surface">Composable Slots</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Architecting complex organisms without nesting hell; leveraging Figma component properties and variants seamlessly.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-4 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0">handshake</span>
+<div>
+<h4 class="font-label-md text-label-md font-semibold text-on-surface">Federated Governance</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Protocols for review councils, deprecation cycles, and avoiding system fragmentation across distributed squads.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-4 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0">code_blocks</span>
+<div>
+<h4 class="font-label-md text-label-md font-semibold text-on-surface">React &amp; Tailwind Parity</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Ensuring 100% 1-to-1 parity between design canvas component props and production React/TypeScript APIs.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Prerequisites Callout -->
+<div class="p-4 rounded-xl bg-secondary-fixed/40 flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px] shrink-0 mt-0.5">info</span>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-secondary-fixed">Prerequisites &amp; Setup</p>
+<p class="font-body-sm text-body-sm text-on-secondary-fixed-variant mt-0.5">Bring a laptop with the latest Figma Desktop client installed and an active Figma account. Familiarity with component variants and auto-layout is highly recommended.</p>
+</div>
+</div>
+<!-- Agenda Schedule -->
+<div class="pt-4 space-y-4">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Workshop Agenda</h3>
+<div class="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-surface-container-high">
+<div class="relative group">
+<div class="absolute -left-[27px] top-1 w-3 h-3 rounded-full bg-primary ring-4 ring-surface-container-lowest"></div>
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+<span class="font-label-sm text-label-sm text-primary font-bold">10:30 AM – 11:45 AM</span>
+<span class="text-xs text-on-surface-variant uppercase font-badge">Stage A • Keynote</span>
+</div>
+<h4 class="font-title-md text-title-md font-semibold text-on-surface mt-1">Foundational Design Systems &amp; Token Architecture</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">The current state of modern multi-brand systems, breaking down token schemas from primitive values to contextual semantics.</p>
+</div>
+<div class="relative group">
+<div class="absolute -left-[27px] top-1 w-3 h-3 rounded-full bg-surface-container-highest ring-4 ring-surface-container-lowest group-hover:bg-primary transition-colors"></div>
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">12:00 PM – 1:30 PM</span>
+<span class="text-xs text-on-surface-variant uppercase font-badge">Hands-on Lab</span>
+</div>
+<h4 class="font-title-md text-title-md font-semibold text-on-surface mt-1">Figma Systems Lab: Advanced Variables &amp; Responsive Modes</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Live exercises configuring color modes, localized dimensions, and typography scaling across viewport containers.</p>
+</div>
+<div class="relative group">
+<div class="absolute -left-[27px] top-1 w-3 h-3 rounded-full bg-surface-container-highest ring-4 ring-surface-container-lowest group-hover:bg-primary transition-colors"></div>
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">2:30 PM – 3:45 PM</span>
+<span class="text-xs text-on-surface-variant uppercase font-badge">Architecture Studio</span>
+</div>
+<h4 class="font-title-md text-title-md font-semibold text-on-surface mt-1">Real-World Component Architecture &amp; Code Handover</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Bridging Figma variables with Tailwind theme plugins, Git PR workflows, and automated token regression testing.</p>
+</div>
+<div class="relative group">
+<div class="absolute -left-[27px] top-1 w-3 h-3 rounded-full bg-tertiary ring-4 ring-surface-container-lowest"></div>
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+<span class="font-label-sm text-label-sm text-tertiary font-bold">4:00 PM – 4:30 PM</span>
+<span class="text-xs text-on-surface-variant uppercase font-badge">Design Lounge</span>
+</div>
+<h4 class="font-title-md text-title-md font-semibold text-on-surface mt-1">Executive Q&amp;A, Portfolio Reviews &amp; Networking Mixer</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Relaxed discussion on design careers, team leadership, craft questions, accompanied by craft coffee and refreshments.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Speaker Section -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 md:p-8 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Featured Instructor</h3>
+<span class="font-label-sm text-label-sm text-primary font-semibold">15+ Years Craft Experience</span>
+</div>
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 pt-2">
+<div class="relative shrink-0">
+<img class="w-20 h-20 rounded-full object-cover shadow-md ring-2 ring-primary-fixed" data-alt="Close-up professional portrait of Elena Rostova, a smiling female executive product designer with warm expressive eyes, modern dark minimalist blazer, short stylish hair, soft directional studio lighting against a clean muted slate background, 8k resolution, authentic and engaging" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBey-OpXlbzVTqXyGvu4tfBOGikJDkFRVfvtIBkZ59ODD4QLfXkuNGUMNKT_TFE_YTmvmsLBAk4dMbVMVIwYKqwoYu4iesQgeesPCv78e-i3VbYnuO3WHOYdKsSEpo6qw0APD_OWC7uD0SgBNla4H01QTI-F_jAzqN09NhAMUTBH1GcnF3P5mBcuneIAuLiMmRQyo392NKC_k3BvY_FxVnCyqF2qdUtmltaAKadR_TGNICCZUH7jINU"/>
+<span class="absolute bottom-0 right-0 bg-tertiary text-on-tertiary rounded-full p-1 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<h4 class="font-title-md text-title-md font-bold text-on-surface">Elena Rostova</h4>
+<span class="text-on-surface-variant font-body-sm text-body-sm">(@erostova)</span>
+</div>
+<p class="font-label-md text-label-md text-primary font-medium">VP of Product Design at Aura • Former Principal at Spotify &amp; Airbnb</p>
+<p class="font-body-md text-body-md text-on-surface-variant pt-1 leading-normal">
+                Elena has architected design systems used by tens of millions worldwide. She frequently speaks at Config, SmashingConf, and advises Fortune 100 design teams on modern tooling and scalable UI engineering.
+              </p>
+</div>
+</div>
+</div>
+<!-- Venue & Location Section -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 md:p-8 shadow-sm space-y-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Venue &amp; Location</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">DesignHub SOMA • 450 Mission St, 4th Floor, San Francisco, CA 94105</p>
+</div>
+<a class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all self-start sm:self-auto shrink-0" href="https://maps.google.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px] text-primary">directions</span>
+              Get Directions
+            </a>
+</div>
+<!-- Location Map Visual -->
+<div class="w-full h-64 rounded-xl bg-surface-container relative overflow-hidden flex items-end p-4 shadow-inner" data-alt="Stylized top-down street cartography map of South of Market San Francisco centered on Mission Street with subtle blue transit routes, crisp landmark pins, and soft minimalist tech vector aesthetics" data-location="450 Mission St, San Francisco, CA" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDoIA12m3Tn0GpymW2dWbGzqpo7XMO5Hkmn_p4Q42Otq1ryhgXgrWimZ7fIZ4vqmxQI0OGee8bmwl4Rf_XMSddIwE0XUfKLTgtb-oUPOPJq2hYXyLXXOORf17gODCqM5hMb_YRavkASJUVGfsmxyjF3LzrPssfdzL4kxuuOXH01oHKFHTX6d7iKS2SRwXsvCPX6nONSTxYkX06YE-zdzJsOSSZMLsk-xaCk1YwGIf3OJkLh6pHJkVZ4')">
+<div class="bg-surface-container-lowest/95 backdrop-blur-md px-4 py-2.5 rounded-lg shadow-md flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">near_me</span>
+<div class="text-left">
+<p class="font-label-sm text-label-sm font-semibold text-on-surface">DesignHub Main Entrance</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">3 min walk from Montgomery St. BART Station</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Loading Skeleton Preview Block -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">hourglass_empty</span>
+<h4 class="font-title-md text-title-md text-on-surface font-semibold">Skeleton Loading Preview</h4>
+</div>
+<span class="font-badge text-badge text-on-surface-variant uppercase tracking-wider">System Micro-State</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            During rapid network handshakes or route transitions, the Event Details view surfaces fluid shimmer placeholders configured precisely to our typography heights:
+          </p>
+<div class="p-4 rounded-xl bg-surface-container-low space-y-4">
+<div class="flex gap-4 items-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-high animate-pulse shrink-0"></div>
+<div class="space-y-2 flex-1">
+<div class="h-4 bg-surface-container-high rounded-md animate-pulse w-1/3"></div>
+<div class="h-3 bg-surface-container-high rounded-md animate-pulse w-1/2"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="h-6 bg-surface-container-high rounded-lg animate-pulse w-3/4"></div>
+<div class="h-3 bg-surface-container-high rounded-md animate-pulse w-full"></div>
+<div class="h-3 bg-surface-container-high rounded-md animate-pulse w-5/6"></div>
+</div>
+<div class="grid grid-cols-3 gap-3 pt-1">
+<div class="h-10 bg-surface-container-high rounded-lg animate-pulse"></div>
+<div class="h-10 bg-surface-container-high rounded-lg animate-pulse"></div>
+<div class="h-10 bg-surface-container-high rounded-lg animate-pulse"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN (~35% / 4 of 12 cols): Sticky Booking Card & State Showcase -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Interactive State Demonstrator Selector -->
+<div class="bg-surface-container-lowest rounded-xl p-3 shadow-sm">
+<p class="font-badge text-badge uppercase text-on-surface-variant px-2 pb-2 font-semibold">Preview Interactive State:</p>
+<div class="grid grid-cols-2 gap-1.5" id="stateSwitcher">
+<button class="state-tab-btn active px-2.5 py-1.5 text-label-sm font-label-sm rounded-lg transition-all text-left flex items-center justify-between bg-primary-container text-on-primary" data-state-btn="available" onclick="setBookingState('available')" type="button">
+<span>Standard (Open)</span>
+<span class="w-2 h-2 rounded-full bg-on-primary"></span>
+</button>
+<button class="state-tab-btn px-2.5 py-1.5 text-label-sm font-label-sm rounded-lg transition-all text-left flex items-center justify-between bg-surface-container hover:bg-surface-container-high text-on-surface" data-state-btn="loggedout" onclick="setBookingState('loggedout')" type="button">
+<span>Logged-out</span>
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+</button>
+<button class="state-tab-btn px-2.5 py-1.5 text-label-sm font-label-sm rounded-lg transition-all text-left flex items-center justify-between bg-surface-container hover:bg-surface-container-high text-on-surface" data-state-btn="booked" onclick="setBookingState('booked')" type="button">
+<span>Booked ✓</span>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+</button>
+<button class="state-tab-btn px-2.5 py-1.5 text-label-sm font-label-sm rounded-lg transition-all text-left flex items-center justify-between bg-surface-container hover:bg-surface-container-high text-on-surface" data-state-btn="soldout" onclick="setBookingState('soldout')" type="button">
+<span>Sold Out</span>
+<span class="w-2 h-2 rounded-full bg-error"></span>
+</button>
+<button class="state-tab-btn px-2.5 py-1.5 text-label-sm font-label-sm rounded-lg transition-all text-left flex items-center justify-between bg-surface-container hover:bg-surface-container-high text-on-surface col-span-2" data-state-btn="ended" onclick="setBookingState('ended')" type="button">
+<span>Past / Event Ended</span>
+<span class="w-2 h-2 rounded-full bg-on-surface-variant"></span>
+</button>
+</div>
+</div>
+<!-- STICKY BOOKING CARD -->
+<div class="sticky top-20 bg-surface-container-lowest rounded-2xl p-6 shadow-xl space-y-6">
+<!-- Price Header -->
+<div class="flex items-baseline justify-between">
+<div>
+<span class="font-headline-lg text-headline-lg font-black text-on-surface tracking-tight">$285</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant"> / seat</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+              Standard Access
+            </span>
+</div>
+<!-- Availability Block -->
+<div class="p-4 rounded-xl bg-surface-container-low space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-on-surface" id="seatsCountLabel">8 of 50 seats left</span>
+<!-- Status Pill (Few left) -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FEF3C7] text-[#D97706] font-badge text-badge" id="availabilityBadge">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D97706] animate-ping"></span>
+                Few seats remaining
+              </span>
+</div>
+<!-- Visual Progress Bar (84% filled) -->
+<div class="w-full bg-surface-container-high rounded-full h-2.5 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full transition-all duration-500 ease-out" id="seatProgressBar" style="width: 84%;"></div>
+</div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant pt-0.5">
+<span>Capacity: 50 attendees</span>
+<span class="font-semibold text-on-surface" id="capacityPercentText">84% Booked</span>
+</div>
+</div>
+<!-- Dynamic Action Area Controlled by Switcher -->
+<div id="dynamicBookingAction">
+<!-- STATE 1: AVAILABLE (Active Booking Default) -->
+<div class="space-y-4" id="state-available">
+<div class="space-y-2">
+<label class="block font-label-md text-label-md font-medium text-on-surface">Select Quantity</label>
+<div class="flex items-center justify-between p-2 rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">group</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface" id="ticketQtyText">1 Ticket</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high flex items-center justify-center text-on-surface transition-colors shadow-sm" onclick="adjustQty(-1)" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="font-title-md text-title-md font-bold w-6 text-center" id="ticketQtyNum">1</span>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high flex items-center justify-center text-on-surface transition-colors shadow-sm" onclick="adjustQty(1)" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Breakdown Rows -->
+<div class="space-y-2 pt-2">
+<div class="flex justify-between font-body-md text-body-md text-on-surface-variant">
+<span>General Admission (<span id="calcSeats">1</span>x)</span>
+<span id="calcSubtotal">$285.00</span>
+</div>
+<div class="flex justify-between font-body-md text-body-md text-on-surface-variant">
+<span>Service fee &amp; catering</span>
+<span>$15.00</span>
+</div>
+<div class="h-[1px] bg-surface-container-high my-2"></div>
+<div class="flex justify-between font-title-md text-title-md font-bold text-on-surface">
+<span>Total</span>
+<span class="text-primary" id="calcTotal">$300.00</span>
+</div>
+</div>
+<!-- Primary CTA Button -->
+<button class="w-full py-3.5 px-6 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-title-md text-title-md font-semibold flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.99]" onclick="handleBookSeat()" type="button">
+<span class="material-symbols-outlined text-[20px]">confirmation_number</span>
+                Book a seat
+              </button>
+</div>
+<!-- STATE 2: LOGGED-OUT VISITOR -->
+<div class="space-y-4 hidden" id="state-loggedout">
+<div class="p-4 rounded-xl bg-surface-container-low text-center space-y-1">
+<p class="font-title-md text-title-md font-semibold text-on-surface">Member Registration Required</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Please authenticate your EventBook profile to secure seats.</p>
+</div>
+<a class="w-full py-3.5 px-6 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-title-md text-title-md font-semibold flex items-center justify-center gap-2 shadow-md transition-all" data-path="login" href="#">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+                Log in to book
+              </a>
+<p class="font-body-sm text-body-sm text-center text-on-surface-variant">
+                Don't have an account? <a class="text-primary font-semibold hover:underline" data-path="signup" href="#">Sign up free</a>
+</p>
+</div>
+<!-- STATE 3: ALREADY BOOKED USER -->
+<div class="space-y-4 hidden" id="state-booked">
+<div class="p-4 rounded-xl bg-[#ECFDF5] space-y-2">
+<div class="flex items-center gap-2 text-[#059669]">
+<span class="material-symbols-outlined text-[22px]">check_circle</span>
+<span class="font-title-md text-title-md font-bold">You're booked ✓</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#065F46]">
+                  Pass #EB-74921 confirmed for Elena Rostova's masterclass. A calendar invitation &amp; physical barcode have been dispatched to your email.
+                </p>
+<div class="pt-2 flex items-center justify-between text-xs font-semibold text-[#065F46]">
+<span>Seat Assignment: SOMA-08</span>
+<a class="underline hover:text-black" data-path="my-bookings" href="#">View in My Bookings</a>
+</div>
+</div>
+<button class="w-full py-2.5 px-4 rounded-xl bg-transparent hover:bg-error-container/40 text-error font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 transition-colors" onclick="showCancelModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+                Cancel booking
+              </button>
+</div>
+<!-- STATE 4: SOLD OUT -->
+<div class="space-y-4 hidden" id="state-soldout">
+<div class="p-4 rounded-xl bg-error-container/30 space-y-1">
+<p class="font-title-md text-title-md font-bold text-on-error-container flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">block</span>
+                  Capacity Reached
+                </p>
+<p class="font-body-sm text-body-sm text-on-error-container">
+                  All 50 workshop stations are currently reserved. You may join the automatic priority waitlist.
+                </p>
+</div>
+<button class="w-full py-3.5 px-6 rounded-xl bg-surface-container-high text-on-surface-variant font-title-md text-title-md font-semibold flex items-center justify-center gap-2 cursor-not-allowed opacity-75" disabled="" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications_active</span>
+                Sold Out — Join Waitlist
+              </button>
+</div>
+<!-- STATE 5: PAST / ENDED -->
+<div class="space-y-4 hidden" id="state-ended">
+<div class="p-4 rounded-xl bg-surface-container space-y-1 text-center">
+<p class="font-title-md text-title-md font-bold text-on-surface-variant">Concluded Event</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">This session took place on Saturday, Nov 2, 2025.</p>
+</div>
+<button class="w-full py-3.5 px-6 rounded-xl bg-surface-container-high text-outline font-title-md text-title-md font-semibold flex items-center justify-center gap-2 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[20px]">event_busy</span>
+                This event has ended
+              </button>
+</div>
+</div>
+<!-- Trust Badges & Policy -->
+<div class="pt-2 space-y-2.5 font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary">bolt</span>
+<span>Guaranteed Instant Digital Confirmation</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">verified_user</span>
+<span>Free cancellation up to 48h before the event</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">workspace_premium</span>
+<span>Certificate of Completion Included</span>
+</div>
+</div>
+<!-- Organizer Quick Note -->
+<div class="p-3 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface font-bold text-xs">
+              EB
+            </div>
+<div class="min-w-0 flex-1">
+<p class="font-label-sm text-label-sm font-semibold text-on-surface">Hosted by EventBook Guild</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Official Design Engineering Chapter</p>
+</div>
+<button class="text-primary hover:text-on-primary-fixed-variant p-1 rounded-lg" type="button">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Cancellation Modal Mockup -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4 hidden" id="cancellationModal">
+<div class="bg-surface-container-lowest max-w-md w-full rounded-2xl p-6 shadow-2xl space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Cancel Registration?</h3>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg" onclick="closeCancelModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Are you sure you want to surrender your seat for the Modern Product Design &amp; Design Systems Workshop 2025? Since cancellation is requested over 48 hours in advance, a full 100% refund of $300.00 will be credited.
+      </p>
+<div class="p-3 rounded-xl bg-error-container/20 text-on-error-container font-body-sm text-body-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+<span>This seat will immediately be offered to the waitlist queue.</span>
+</div>
+<div class="flex items-center justify-end gap-3 pt-2">
+<button class="px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md" onclick="closeCancelModal()" type="button">
+          Keep My Seat
+        </button>
+<button class="px-4 py-2 rounded-lg bg-error text-on-error hover:bg-on-error-container font-label-md text-label-md shadow-sm" onclick="confirmCancelBooking()" type="button">
+          Confirm Cancellation
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  let currentQty = 1;
+  const unitPrice = 285;
+  const serviceFee = 15;
+
+  function adjustQty(delta) {
+    const newQty = currentQty + delta;
+    if (newQty >= 1 && newQty <= 4) {
+      currentQty = newQty;
+      updateBreakdown();
+    }
+  }
+
+  function updateBreakdown() {
+    const qtyText = document.getElementById('ticketQtyText');
+    const qtyNum = document.getElementById('ticketQtyNum');
+    const calcSeats = document.getElementById('calcSeats');
+    const calcSubtotal = document.getElementById('calcSubtotal');
+    const calcTotal = document.getElementById('calcTotal');
+
+    if (qtyText && qtyNum && calcSeats && calcSubtotal && calcTotal) {
+      qtyText.textContent = currentQty === 1 ? '1 Ticket' : `${currentQty} Tickets`;
+      qtyNum.textContent = currentQty;
+      calcSeats.textContent = currentQty;
+      
+      const sub = currentQty * unitPrice;
+      const total = sub + serviceFee;
+      calcSubtotal.textContent = `$${sub.toFixed(2)}`;
+      calcTotal.textContent = `$${total.toFixed(2)}`;
+    }
+  }
+
+  function setBookingState(stateKey) {
+    const states = ['available', 'loggedout', 'booked', 'soldout', 'ended'];
+    states.forEach(s => {
+      const el = document.getElementById(`state-${s}`);
+      if (el) el.classList.add('hidden');
+    });
+
+    const targetEl = document.getElementById(`state-${stateKey}`);
+    if (targetEl) targetEl.classList.remove('hidden');
+
+    // Update switcher tab styling
+    document.querySelectorAll('.state-tab-btn').forEach(btn => {
+      btn.classList.remove('bg-primary-container', 'text-on-primary', 'active');
+      btn.classList.add('bg-surface-container', 'text-on-surface');
+      const dot = btn.querySelector('span:last-child');
+      if (dot) dot.classList.replace('bg-on-primary', 'bg-outline');
+    });
+
+    const activeBtn = document.querySelector(`[data-state-btn="${stateKey}"]`);
+    if (activeBtn) {
+      activeBtn.classList.add('bg-primary-container', 'text-on-primary', 'active');
+      activeBtn.classList.remove('bg-surface-container', 'text-on-surface');
+      const dot = activeBtn.querySelector('span:last-child');
+      if (dot) dot.classList.replace('bg-outline', 'bg-on-primary');
+    }
+
+    // Dynamic header changes based on state
+    const seatsLabel = document.getElementById('seatsCountLabel');
+    const badge = document.getElementById('availabilityBadge');
+    const progressBar = document.getElementById('seatProgressBar');
+    const percentText = document.getElementById('capacityPercentText');
+
+    if (stateKey === 'soldout') {
+      if (seatsLabel) seatsLabel.textContent = '0 of 50 seats left';
+      if (badge) {
+        badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FEE2E2] text-[#DC2626] font-badge text-badge';
+        badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-[#DC2626]"></span> Sold Out';
+      }
+      if (progressBar) progressBar.style.width = '100%';
+      if (percentText) percentText.textContent = '100% Full';
+    } else if (stateKey === 'ended') {
+      if (seatsLabel) seatsLabel.textContent = 'Event Concluded';
+      if (badge) {
+        badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-badge text-badge';
+        badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-outline"></span> Past Session';
+      }
+      if (progressBar) progressBar.style.width = '100%';
+      if (percentText) percentText.textContent = 'Archived';
+    } else {
+      if (seatsLabel) seatsLabel.textContent = '8 of 50 seats left';
+      if (badge) {
+        badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FEF3C7] text-[#D97706] font-badge text-badge';
+        badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-[#D97706] animate-ping"></span> Few seats remaining';
+      }
+      if (progressBar) progressBar.style.width = '84%';
+      if (percentText) percentText.textContent = '84% Booked';
+    }
+  }
+
+  function handleBookSeat() {
+    setBookingState('booked');
+  }
+
+  function showCancelModal() {
+    const modal = document.getElementById('cancellationModal');
+    if (modal) modal.classList.remove('hidden');
+  }
+
+  function closeCancelModal() {
+    const modal = document.getElementById('cancellationModal');
+    if (modal) modal.classList.add('hidden');
+  }
+
+  function confirmCancelBooking() {
+    closeCancelModal();
+    setBookingState('available');
+  }
+</script></main><footer class="w-full bg-surface-container-lowest mt-space-xl"><div class="max-w-7xl mx-auto px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-4 gap-gutter"><div class="space-y-space-sm md:col-span-1"><div class="flex items-center gap-space-sm"><img alt="EventBook Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wxc71srGrSxUjX58XgTT9XVw-JUOMoDU7t9qEPwbTO9rVdy1BD7bw1DXyjnUV7Lrf4MHMGGTAE4YDqso0x4Ctaj121EH0A9bc5VxRSTPHARH9OevPljsE7rwQQl_DSAAgh9Q3n8oyJrfuoc6O52qfj4Nd8hMK1gjfrZ3S-RzqLVYiFPhxH99HWaVWW9I5dzlCtw4rURTdoB73q1abGIAzussTZa6DBvRuk1QjnAIPzyAsAVFlOPt69aw"/><span class="font-title-md text-title-md text-on-surface font-bold">EventBook</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">The friction-free discovery and ticketing platform for premium live cultural events, concerts, and conferences.</p></div><div><h4 class="font-label-md text-label-md text-on-surface font-semibold mb-space-sm">Discover</h4><ul class="space-y-space-xs"><li class="font-body-sm text-body-sm"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="browse-events" href="#">All Events</a></li><li class="font-body-sm text-body-sm"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="browse-events" href="#">Venues &amp; Stages</a></li><li class="font-body-sm text-body-sm"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="browse-events" href="#">Upcoming This Weekend</a></li></ul></div><div><h4 class="font-label-md text-label-md text-on-surface font-semibold mb-space-sm">Support</h4><ul class="space-y-space-xs"><li class="font-body-sm text-body-sm"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="help-support" href="#">Help Center</a></li><li class="font-body-sm text-body-sm"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="help-support" href="#">Ticket Policies</a></li><li class="font-body-sm text-body-sm"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="help-support" href="#">Terms of Service</a></li></ul></div><div><h4 class="font-label-md text-label-md text-on-surface font-semibold mb-space-sm">Admin Access</h4><ul class="space-y-space-xs"><li class="font-body-sm text-body-sm"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="events-dashboard" href="#">Organizer Portal</a></li><li class="font-body-sm text-body-sm"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="add-new-event" href="#">Host an Event</a></li></ul></div></div><div class="mt-space-xl pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-sm"><p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 EventBook Technologies, Inc. All rights reserved.</p><div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant"><a class="hover:text-on-surface" data-path="help-support" href="#">Privacy</a><a class="hover:text-on-surface" data-path="help-support" href="#">Security</a><a class="hover:text-on-surface" data-path="help-support" href="#">Contact</a></div></div></div></footer></body></html>
