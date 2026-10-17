@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>EventBook Admin</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary":"#565e74","primary-fixed":"#e2dfff","primary-fixed-dim":"#c3c0ff","on-primary":"#ffffff","on-primary-fixed-variant":"#3323cc","on-secondary-container":"#5c647a","on-error-container":"#93000a","surface-container-high":"#e6e8ea","on-surface-variant":"#464555","primary-container":"#4f46e5","surface-dim":"#d8dadc","on-primary-fixed":"#0f0069","outline":"#777587","tertiary":"#005338","primary":"#3525cd","on-error":"#ffffff","on-primary-container":"#dad7ff","surface-container-low":"#f2f4f6","on-tertiary-fixed-variant":"#005137","secondary-fixed":"#dae2fd","error":"#ba1a1a","surface-variant":"#e0e3e5","surface-bright":"#f7f9fb","on-secondary-fixed":"#131b2e","on-background":"#191c1e","background":"#f7f9fb","secondary-fixed-dim":"#bec6e0","on-secondary-fixed-variant":"#3f465c","inverse-surface":"#2d3133","error-container":"#ffdad6","inverse-primary":"#c3c0ff","on-tertiary-fixed":"#002114","surface-container-lowest":"#ffffff","surface":"#f7f9fb","on-surface":"#191c1e","on-secondary":"#ffffff","tertiary-fixed":"#85f8c4","surface-container-highest":"#e0e3e5","secondary-container":"#dae2fd","on-tertiary":"#ffffff","inverse-on-surface":"#eff1f3","surface-container":"#eceef0","tertiary-container":"#006e4c","tertiary-fixed-dim":"#68dba9","on-tertiary-container":"#7df1bd","surface-tint":"#4d44e3","outline-variant":"#c7c4d8"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"margin":"2rem","space-md":"1rem","space-xl":"2rem","margin-mobile":"1rem","gutter":"1.5rem","space-lg":"1.5rem","space-xs":"0.25rem","gutter-mobile":"1rem","space-sm":"0.5rem"},"fontFamily":{"label-sm":["Inter"],"display-hero-mobile":["Inter"],"display-hero":["Inter"],"label-md":["Inter"],"body-sm":["Inter"],"headline-lg-mobile":["Inter"],"title-md":["Inter"],"headline-md":["Inter"],"headline-lg":["Inter"],"body-md":["Inter"],"badge":["Inter"],"body-lg":["Inter"],"headline-sm":["Inter"]},"fontSize":{"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"display-hero-mobile":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"800"}],"display-hero":["48px",{"lineHeight":"56px","letterSpacing":"-0.025em","fontWeight":"800"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"500"}],"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0.005em","fontWeight":"400"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"700"}],"title-md":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"badge":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"26px","letterSpacing":"0em","fontWeight":"400"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest z-50 flex flex-col justify-between py-space-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col gap-space-lg"><div class="px-space-md flex items-center justify-between"><a class="flex items-center gap-space-sm" data-path="events-dashboard" href="#"><img alt="EventBook Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wxc71srGrSxUjX58XgTT9XVw-JUOMoDU7t9qEPwbTO9rVdy1BD7bw1DXyjnUV7Lrf4MHMGGTAE4YDqso0x4Ctaj121EH0A9bc5VxRSTPHARH9OevPljsE7rwQQl_DSAAgh9Q3n8oyJrfuoc6O52qfj4Nd8hMK1gjfrZ3S-RzqLVYiFPhxH99HWaVWW9I5dzlCtw4rURTdoB73q1abGIAzussTZa6DBvRuk1QjnAIPzyAsAVFlOPt69aw"/><span class="font-title-md text-title-md text-on-surface font-bold">EventBook</span></a><span class="px-space-xs py-0.5 rounded-full bg-primary-container text-on-primary font-badge text-badge">ADMIN</span></div><nav class="flex flex-col gap-space-xs px-space-sm" data-active-classes="bg-primary-container text-on-primary font-semibold"><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl transition-all bg-primary-container text-on-primary font-semibold" data-path="events-dashboard" href="#"><span class="material-symbols-outlined text-[20px]">confirmation_number</span>Events Dashboard</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-label-md text-label-md" data-path="add-new-event" href="#"><span class="material-symbols-outlined text-[20px]">add_circle</span>Add New Event</a></nav></div><div class="px-space-sm flex flex-col gap-space-xs"><div class="my-space-xs bg-surface-container-high h-[1px]"></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-label-md text-label-md" data-path="browse-events" href="#"><span class="material-symbols-outlined text-[20px]">storefront</span>Public Site</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-error hover:bg-error-container hover:text-on-error-container transition-all font-label-md text-label-md" data-path="login" href="#"><span class="material-symbols-outlined text-[20px]">logout</span>Sign out</a></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/95 backdrop-blur-md z-40 flex items-center justify-between px-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant"><span class="hover:text-on-surface">EventBook</span><span class="material-symbols-outlined text-[16px]">chevron_right</span><span class="hover:text-on-surface">Console</span><span class="material-symbols-outlined text-[16px]">chevron_right</span><span class="text-on-surface font-semibold">Overview</span></div><div class="flex items-center gap-space-md"><button class="p-space-xs text-on-surface-variant hover:text-on-surface flex items-center justify-center rounded-lg hover:bg-surface-container-high" type="button"><span class="material-symbols-outlined text-[20px]">search</span></button><button class="p-space-xs text-on-surface-variant hover:text-on-surface flex items-center justify-center rounded-lg hover:bg-surface-container-high" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span></button><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_1px_2px_rgba(0,0,0,0.05)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9utRlYt4a3xkUbybqvOL1TCjVnODCUuG5BJDD_u1AWMIURbBBNMAzsQboyAb162fNIBWZRGfvSesmcWv-b3x1p8SPCyteWTecPHfpDgOz3OyDUxu5JTahwczmFnoCYrAno20TAPJcIAD5Lb0izDk63ocIxlL9bdAw_sq3QITF9MPAlo--S9wnv8gCyE9IVBYeOOXi-zh2DYZbcsfHSFMKiXvM0e6SZ5AV1jZFWmy82bMDxHwmrG4I"/><div class="hidden sm:block text-left"><p class="font-label-sm text-label-sm text-on-surface leading-tight font-semibold">Sarah Jenkins</p><p class="font-badge text-badge text-on-surface-variant">Admin</p></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-64px)] px-space-xl py-space-lg"><div class="flex flex-col w-full">
+<!-- Top Context Navigation -->
+<div class="flex items-center justify-between mb-space-md">
+<a class="inline-flex items-center gap-space-xs text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" data-path="events-dashboard" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Back to Events Dashboard</span>
+</a>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-body-sm text-body-sm">
+<span class="inline-block w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span>Live synchronization active</span>
+</div>
+</div>
+<!-- Event Header & Metrics Bento Banner -->
+<div class="relative bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden p-space-lg mb-space-lg">
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-primary-fixed/30 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-lg relative z-10">
+<div class="space-y-space-xs">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-badge text-badge tracking-wider uppercase">
+<span class="material-symbols-outlined text-[14px]">confirmation_number</span>
+          Event ID: EVT-88294
+        </div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">Attendees: Tech Leaders Summit 2025</h1>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-space-md text-on-surface-variant font-body-md text-body-md">
+<span class="inline-flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">calendar_today</span>
+            Thursday, Oct 24, 2025
+          </span>
+<span class="text-outline-variant">•</span>
+<span class="inline-flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
+            Moscone Center, San Francisco CA
+          </span>
+<span class="text-outline-variant">•</span>
+<span class="inline-flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">schedule</span>
+            09:00 AM - 05:30 PM PST
+          </span>
+</div>
+</div>
+<!-- Capacity Metric Pill with Inline Progress Gauge -->
+<div class="flex items-center self-start lg:self-center gap-space-md bg-primary-container text-on-primary px-space-lg py-space-md rounded-xl shadow-sm">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="w-12 h-12 -rotate-90" viewbox="0 0 36 36">
+<path class="text-on-primary/20" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-primary-fixed" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="76, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute text-[11px] font-bold tracking-tight">76%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold leading-none tracking-tight">38 / 50</span>
+<span class="font-label-sm text-label-sm text-on-primary/80 mt-1">Seats Booked (12 left)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Metric Chips Bar -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">group</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">Total Registered</p>
+<p class="font-headline-sm text-headline-sm font-bold text-on-surface">38</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[22px]">check_circle</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">Confirmed Passes</p>
+<p class="font-headline-sm text-headline-sm font-bold text-tertiary">35</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">cancel</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">Cancellations</p>
+<p class="font-headline-sm text-headline-sm font-bold text-secondary">3</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">Gross Revenue</p>
+<p class="font-headline-sm text-headline-sm font-bold text-on-surface">$18,240</p>
+</div>
+</div>
+</div>
+<!-- Filter, Search & Export Action Bar -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm mb-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<!-- Search Input -->
+<div class="relative flex-1 max-w-lg">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px] pointer-events-none">search</span>
+<input class="w-full h-11 pl-10 pr-4 bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" id="attendeeSearchInput" placeholder="Search attendees by name, email, or ticket ID..." type="text"/>
+</div>
+<!-- Filter Pills & Export Action -->
+<div class="flex flex-wrap items-center gap-space-sm justify-between md:justify-end">
+<!-- Status Tabs -->
+<div class="inline-flex p-1 bg-surface-container-low rounded-lg font-label-md text-label-md" id="filterTabGroup">
+<button class="filter-tab active px-3.5 py-1.5 rounded-[6px] font-semibold bg-surface-container-lowest text-primary shadow-sm transition-all flex items-center gap-1.5" data-filter="all" type="button">
+<span>All</span>
+<span class="px-1.5 py-0.5 rounded-full bg-primary-fixed text-primary text-[11px] font-bold">38</span>
+</button>
+<button class="filter-tab px-3.5 py-1.5 rounded-[6px] font-medium text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1.5" data-filter="confirmed" type="button">
+<span>Confirmed</span>
+<span class="px-1.5 py-0.5 rounded-full bg-tertiary-container/10 text-tertiary text-[11px] font-bold">35</span>
+</button>
+<button class="filter-tab px-3.5 py-1.5 rounded-[6px] font-medium text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1.5" data-filter="cancelled" type="button">
+<span>Cancelled</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container text-secondary text-[11px] font-bold">3</span>
+</button>
+</div>
+<!-- Export CSV Button -->
+<button class="inline-flex items-center gap-space-xs h-11 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all active:scale-95" id="exportBtn" title="Download attendee list in CSV format" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Primary Attendees Data Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden mb-space-xl">
+<div class="overflow-x-auto">
+<table class="w-full text-left" id="attendeesTable">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-space-md px-space-lg font-semibold" scope="col">Attendee Name</th>
+<th class="py-space-md px-space-md font-semibold" scope="col">Email</th>
+<th class="py-space-md px-space-md font-semibold" scope="col">Booked On</th>
+<th class="py-space-md px-space-md font-semibold" scope="col">Status</th>
+<th class="py-space-md px-space-lg text-right font-semibold" scope="col">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low font-body-md text-body-md">
+<!-- Row 1: Sarah Jenkins (With Provided Avatar) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors attendee-row" data-status="confirmed">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-md">
+<img alt="Sarah Jenkins portrait" class="w-10 h-10 rounded-full object-cover shadow-sm ring-2 ring-primary-fixed/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9utRlYt4a3xkUbybqvOL1TCjVnODCUuG5BJDD_u1AWMIURbBBNMAzsQboyAb162fNIBWZRGfvSesmcWv-b3x1p8SPCyteWTecPHfpDgOz3OyDUxu5JTahwczmFnoCYrAno20TAPJcIAD5Lb0izDk63ocIxlL9bdAw_sq3QITF9MPAlo--S9wnv8gCyE9IVBYeOOXi-zh2DYZbcsfHSFMKiXvM0e6SZ5AV1jZFWmy82bMDxHwmrG4I"/>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-on-surface leading-tight">Sarah Jenkins</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">VIP • Executive Badge #TK-1082</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="text-on-surface font-medium">sarah.jenkins@example.com</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant tabular-nums">
+              Oct 12, 2025, 2:15 PM
+            </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-tertiary-container/15 text-tertiary uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Confirmed
+              </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="inline-flex items-center gap-space-xs">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all" onclick="alert('Ticket resent to sarah.jenkins@example.com')" type="button">
+                  Resend ticket
+                </button>
+<button class="px-3 py-1.5 rounded-lg bg-primary-fixed/60 hover:bg-primary-fixed text-primary font-label-sm text-label-sm transition-all" type="button">
+                  View details
+                </button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Marcus Vance -->
+<tr class="hover:bg-surface-container-low/60 transition-colors attendee-row" data-status="confirmed">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed font-title-md text-title-md flex items-center justify-center font-bold">
+                  MV
+                </div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-on-surface leading-tight">Marcus Vance</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">General Admission #TK-1099</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="text-on-surface font-medium">m.vance@vancetech.io</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant tabular-nums">
+              Oct 14, 2025, 10:04 AM
+            </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-tertiary-container/15 text-tertiary uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Confirmed
+              </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="inline-flex items-center gap-space-xs">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all" onclick="alert('Ticket resent to m.vance@vancetech.io')" type="button">
+                  Resend ticket
+                </button>
+<button class="px-3 py-1.5 rounded-lg bg-primary-fixed/60 hover:bg-primary-fixed text-primary font-label-sm text-label-sm transition-all" type="button">
+                  View details
+                </button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Aisha Patel -->
+<tr class="hover:bg-surface-container-low/60 transition-colors attendee-row" data-status="confirmed">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed text-on-primary-fixed font-title-md text-title-md flex items-center justify-center font-bold">
+                  AP
+                </div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-on-surface leading-tight">Aisha Patel</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Speaker Delegate #TK-1011</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="text-on-surface font-medium">aisha.patel@designloop.co</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant tabular-nums">
+              Oct 15, 2025, 4:45 PM
+            </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-tertiary-container/15 text-tertiary uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Confirmed
+              </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="inline-flex items-center gap-space-xs">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all" onclick="alert('Ticket resent to aisha.patel@designloop.co')" type="button">
+                  Resend ticket
+                </button>
+<button class="px-3 py-1.5 rounded-lg bg-primary-fixed/60 hover:bg-primary-fixed text-primary font-label-sm text-label-sm transition-all" type="button">
+                  View details
+                </button>
+</div>
+</td>
+</tr>
+<!-- Row 4: David Chen (Cancelled) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors attendee-row opacity-85" data-status="cancelled">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-secondary font-title-md text-title-md flex items-center justify-center font-bold">
+                  DC
+                </div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-on-surface leading-tight">David Chen</span>
+<span class="font-body-sm text-body-sm text-outline">Refund Processed #TK-0984</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="text-secondary font-medium">dchen@innovate.org</span>
+</td>
+<td class="py-space-md px-space-md text-secondary tabular-nums">
+              Oct 16, 2025, 11:20 AM
+            </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-surface-container-high text-secondary uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Cancelled
+              </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container-low text-secondary font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">lock_reset</span>
+                Seat released
+              </span>
+</td>
+</tr>
+<!-- Row 5: Elena Gomez -->
+<tr class="hover:bg-surface-container-low/60 transition-colors attendee-row" data-status="confirmed">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed-dim text-on-secondary-fixed-variant font-title-md text-title-md flex items-center justify-center font-bold">
+                  EG
+                </div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-on-surface leading-tight">Elena Gomez</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">General Admission #TK-1130</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="text-on-surface font-medium">elena@startupbase.es</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant tabular-nums">
+              Oct 18, 2025, 8:30 AM
+            </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-tertiary-container/15 text-tertiary uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Confirmed
+              </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="inline-flex items-center gap-space-xs">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all" onclick="alert('Ticket resent to elena@startupbase.es')" type="button">
+                  Resend ticket
+                </button>
+<button class="px-3 py-1.5 rounded-lg bg-primary-fixed/60 hover:bg-primary-fixed text-primary font-label-sm text-label-sm transition-all" type="button">
+                  View details
+                </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & Row Summary Footer -->
+<div class="px-space-lg py-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-sm text-label-sm text-on-surface-variant">
+<span>Showing <strong class="text-on-surface font-semibold">1 to 5</strong> of <strong class="text-on-surface font-semibold">38</strong> entries</span>
+<div class="inline-flex items-center gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface flex items-center justify-center hover:bg-surface-container disabled:opacity-40" disabled="" type="button">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary font-bold flex items-center justify-center" type="button">1</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container flex items-center justify-center" type="button">2</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container flex items-center justify-center" type="button">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container flex items-center justify-center" type="button">8</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface flex items-center justify-center hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Component Previews: Empty State & Skeleton Loading -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg mb-space-xl">
+<!-- Empty State Component Preview Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-outline font-semibold tracking-wider uppercase">
+<span class="material-symbols-outlined text-[16px] text-primary">visibility</span>
+          Component Preview: Zero-State
+        </div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary text-[11px] font-semibold">Ready State</span>
+</div>
+<div class="my-auto py-space-lg px-space-md flex flex-col items-center text-center">
+<!-- SVG Empty Illustration -->
+<div class="relative w-20 h-20 mb-space-md rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+<div class="absolute inset-0 rounded-full bg-primary/5 animate-ping opacity-75"></div>
+<svg class="w-10 h-10 text-primary-container" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></path>
+</svg>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-space-xs">No bookings yet</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm">
+          When visitors register for this event, their registration details, tickets, and attendance status will appear here.
+        </p>
+<button class="mt-space-md inline-flex items-center gap-space-xs px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">share</span>
+          Share Event Link
+        </button>
+</div>
+</div>
+<!-- Loading Skeleton Preview Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-outline font-semibold tracking-wider uppercase">
+<span class="material-symbols-outlined text-[16px] text-primary">hourglass_empty</span>
+          Component Preview: Loading State
+        </div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary text-[11px] font-semibold">Shimmer Active</span>
+</div>
+<!-- Simulated Skeleton Table Rows -->
+<div class="w-full space-y-space-md animate-pulse my-auto py-space-sm">
+<div class="h-4 bg-surface-container-high rounded w-1/3 mb-space-sm"></div>
+<!-- Skeleton Row 1 -->
+<div class="p-space-md bg-surface-container-low rounded-xl flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md w-1/3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0"></div>
+<div class="space-y-1.5 w-full">
+<div class="h-3.5 bg-surface-container-high rounded w-3/4"></div>
+<div class="h-2.5 bg-surface-container-high rounded w-1/2"></div>
+</div>
+</div>
+<div class="h-3.5 bg-surface-container-high rounded w-1/4 hidden sm:block"></div>
+<div class="h-6 bg-surface-container-high rounded-full w-20"></div>
+<div class="h-8 bg-surface-container-high rounded-lg w-24"></div>
+</div>
+<!-- Skeleton Row 2 -->
+<div class="p-space-md bg-surface-container-low rounded-xl flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md w-1/3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0"></div>
+<div class="space-y-1.5 w-full">
+<div class="h-3.5 bg-surface-container-high rounded w-2/3"></div>
+<div class="h-2.5 bg-surface-container-high rounded w-1/3"></div>
+</div>
+</div>
+<div class="h-3.5 bg-surface-container-high rounded w-1/4 hidden sm:block"></div>
+<div class="h-6 bg-surface-container-high rounded-full w-20"></div>
+<div class="h-8 bg-surface-container-high rounded-lg w-24"></div>
+</div>
+<!-- Skeleton Row 3 -->
+<div class="p-space-md bg-surface-container-low rounded-xl flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md w-1/3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0"></div>
+<div class="space-y-1.5 w-full">
+<div class="h-3.5 bg-surface-container-high rounded w-4/5"></div>
+<div class="h-2.5 bg-surface-container-high rounded w-2/5"></div>
+</div>
+</div>
+<div class="h-3.5 bg-surface-container-high rounded w-1/4 hidden sm:block"></div>
+<div class="h-6 bg-surface-container-high rounded-full w-20"></div>
+<div class="h-8 bg-surface-container-high rounded-lg w-24"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Interactive Filter and Real-Time Search Logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('attendeeSearchInput');
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const rows = document.querySelectorAll('.attendee-row');
+    const exportBtn = document.getElementById('exportBtn');
+
+    let currentFilter = 'all';
+    let searchQuery = '';
+
+    function filterTable() {
+      rows.forEach(row => {
+        const rowStatus = row.getAttribute('data-status');
+        const textContent = row.textContent.toLowerCase();
+        
+        const matchesFilter = (currentFilter === 'all') || (rowStatus === currentFilter);
+        const matchesSearch = textContent.includes(searchQuery);
+
+        if (matchesFilter && matchesSearch) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // Search query listener
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.toLowerCase().trim();
+        filterTable();
+      });
+    }
+
+    // Filter pill toggles
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => {
+          t.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm', 'font-semibold');
+          t.classList.add('text-on-surface-variant', 'font-medium');
+        });
+
+        tab.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm', 'font-semibold');
+        tab.classList.remove('text-on-surface-variant', 'font-medium');
+
+        currentFilter = tab.getAttribute('data-filter');
+        filterTable();
+      });
+    });
+
+    // Simulated CSV Export
+    if (exportBtn) {
+      exportBtn.addEventListener('click', () => {
+        const timestamp = new Date().toISOString().slice(0, 10);
+        const csvContent = "data:text/csv;charset=utf-8," 
+          + "Name,Email,Booked On,Status\n"
+          + "Sarah Jenkins,sarah.jenkins@example.com,Oct 12 2025 2:15 PM,Confirmed\n"
+          + "Marcus Vance,m.vance@vancetech.io,Oct 14 2025 10:04 AM,Confirmed\n"
+          + "Aisha Patel,aisha.patel@designloop.co,Oct 15 2025 4:45 PM,Confirmed\n"
+          + "David Chen,dchen@innovate.org,Oct 16 2025 11:20 AM,Cancelled\n"
+          + "Elena Gomez,elena@startupbase.es,Oct 18 2025 8:30 AM,Confirmed\n";
+
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `Tech_Leaders_Summit_Attendees_${timestamp}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+    }
+  });
+</script></main></div></body></html>
