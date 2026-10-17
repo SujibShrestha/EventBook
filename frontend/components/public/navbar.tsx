@@ -23,6 +23,10 @@ function useNavbarUser() {
   return { user, isReady }
 }
 
+function getUserInitial(user: AuthUser) {
+  return (user.name.trim()[0] ?? user.email.trim()[0] ?? "U").toUpperCase()
+}
+
 export function SiteNavbar() {
   const router = useRouter()
   const { user, isReady } = useNavbarUser()
@@ -59,14 +63,27 @@ export function SiteNavbar() {
 
         <div className="flex items-center gap-2">
           {isReady && user ? (
-            <button
-              type="button"
-              onClick={handleSignOut}
-              className="inline-flex h-10 items-center gap-2 rounded-lg px-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100"
-            >
-              <LogOut className="size-4" aria-hidden="true" />
-              Sign out
-            </button>
+            <>
+              <div className="flex items-center gap-2 rounded-lg px-2 py-1">
+                <span
+                  className="flex size-9 items-center justify-center rounded-full bg-indigo-600 text-sm font-bold text-white shadow-sm"
+                  aria-label={`Signed in as ${user.name}`}
+                >
+                  {getUserInitial(user)}
+                </span>
+                <span className="hidden max-w-28 truncate text-sm font-semibold text-slate-700 sm:block">
+                  {user.name}
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={handleSignOut}
+                className="inline-flex h-10 items-center gap-2 rounded-lg px-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100"
+              >
+                <LogOut className="size-4" aria-hidden="true" />
+                Sign out
+              </button>
+            </>
           ) : null}
 
           {isReady && !user ? (

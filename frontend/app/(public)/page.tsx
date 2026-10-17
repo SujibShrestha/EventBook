@@ -12,14 +12,6 @@ type HomePageProps = {
   }>
 }
 
-const categoryLinks = [
-  { label: "All", href: "/" },
-  { label: "Tech & AI", href: "/?q=tech" },
-  { label: "Design", href: "/?q=design" },
-  { label: "Business", href: "/?q=business" },
-  { label: "Creative", href: "/?q=creative" },
-]
-
 const CURRENT_TIME = new Date("2026-10-17T00:00:00+05:45").getTime()
 
 function parsePage(value: string | undefined) {
@@ -175,25 +167,6 @@ export default async function Home({ searchParams }: HomePageProps) {
             </div>
           </form>
 
-          <div className="mt-4 flex items-center gap-2 overflow-x-auto pb-1">
-            {categoryLinks.map((category) => {
-              const isActive = category.href === "/" ? !query : category.href.includes(encodeURIComponent(query))
-
-              return (
-                <Link
-                  key={category.label}
-                  href={category.href}
-                  className={
-                    isActive
-                      ? "shrink-0 rounded-full bg-indigo-600 px-4 py-1.5 text-sm font-semibold text-white shadow-sm"
-                      : "shrink-0 rounded-full border border-slate-200 bg-white px-4 py-1.5 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-100"
-                  }
-                >
-                  {category.label}
-                </Link>
-              )
-            })}
-          </div>
         </div>
       </section>
 
