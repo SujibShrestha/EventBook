@@ -98,10 +98,6 @@ export function MyBookingsClient() {
   }, [bookings, filter, query])
 
   async function handleCancel(booking: MyBooking) {
-    const confirmed = window.confirm(`Cancel booking for "${booking.event.title}"?`)
-
-    if (!confirmed) return
-
     setCancellingId(booking.id)
 
     try {
