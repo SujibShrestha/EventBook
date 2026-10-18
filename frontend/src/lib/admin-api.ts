@@ -38,6 +38,29 @@ export type UserBookingCount = {
   cancelledBookings: number
 }
 
+export type EventBooking = {
+  id: string
+  status: "CONFIRMED" | "WAITLISTED" | "CANCELLED"
+  createdAt: string
+  cancelledAt: string | null
+  user: {
+    id: string
+    name: string
+    email: string
+  }
+}
+
+export type EventBookingsResult = {
+  event: {
+    id: string
+    title: string
+    startsAt: string
+    venue: string
+    totalSeats: number
+  }
+  bookings: EventBooking[]
+}
+
 type EventsResponse = {
   data: {
     events: EventRecord[]
@@ -54,6 +77,8 @@ type EventResponse = {
 type UserBookingCountsResponse = {
   users: UserBookingCount[]
 }
+
+type EventBookingsResponse = EventBookingsResult
 
 export async function listAdminEvents(page = 1, limit = 20) {
   const response = await api.get<EventsResponse>("/events", {
@@ -89,4 +114,10 @@ export async function listUserBookingCounts() {
   const response = await api.get<UserBookingCountsResponse>("/bookings/admin/users")
 
   return response.data.users
+}
+
+export async function listEventBookings(eventId: string) {
+  const response = await api.get<EventBookingsResponse>(`/events/${eventId}/bookings`)
+
+  return response.data
 }

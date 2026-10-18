@@ -127,6 +127,43 @@ export const listMyBookings = async (userId: string) => {
   });
 };
 
+export const listEventBookings = async (eventId: string) => {
+  const event = await prisma.event.findUnique({
+    where: { id: eventId },
+    select: {
+      id: true,
+      title: true,
+      startsAt: true,
+      venue: true,
+      totalSeats: true,
+    },
+  });
+
+  if (!event) {
+    throw new AppError(404, "EVENT_NOT_FOUND", "Event not found");
+  }
+
+  const bookings = await prisma.booking.findMany({
+    where: { eventId },
+    orderBy: { createdAt: "desc" },
+    select: {
+      id: true,
+      status: true,
+      createdAt: true,
+      cancelledAt: true,
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+        },
+      },
+    },
+  });
+
+  return { event, bookings };
+};
+
 export const listUserBookingCounts = async () => {
   const [users, bookingCounts] = await Promise.all([
     prisma.user.findMany({

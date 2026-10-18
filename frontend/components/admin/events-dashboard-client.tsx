@@ -41,6 +41,7 @@ export function EventsDashboardClient() {
   const [query, setQuery] = useState("")
   const [isLoading, setIsLoading] = useState(true)
   const [deletingId, setDeletingId] = useState("")
+  const [pendingDelete, setPendingDelete] = useState<EventRecord | null>(null)
 
   const filteredEvents = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
@@ -87,15 +88,12 @@ export function EventsDashboardClient() {
   }, [page])
 
   async function handleDelete(event: EventRecord) {
-    const confirmed = window.confirm(`Delete "${event.title}"? This cannot be undone.`)
-
-    if (!confirmed) return
-
     setDeletingId(event.id)
 
     try {
       await deleteAdminEvent(event.id)
       setEvents((current) => current.filter((item) => item.id !== event.id))
+      setPendingDelete(null)
       toast.success("Event deleted.")
     } catch (error) {
       toast.error(getApiErrorMessage(error, "Unable to delete event."))
@@ -199,7 +197,12 @@ export function EventsDashboardClient() {
                           )}
                         </div>
                         <div>
-                          <p className="font-semibold text-slate-950">{event.title}</p>
+                          <Link
+                            href={`/admin/events/${event.id}/attendees`}
+                            className="font-semibold text-slate-950 transition-colors hover:text-indigo-700"
+                          >
+                            {event.title}
+                          </Link>
                           <p className="line-clamp-1 max-w-xs text-xs text-slate-500">{event.description}</p>
                         </div>
                       </div>
@@ -225,6 +228,16 @@ export function EventsDashboardClient() {
                           variant="outline"
                           size="icon-sm"
                           className="border-slate-200 bg-white text-slate-700"
+                          aria-label={`View attendees for ${event.title}`}
+                          onClick={() => router.push(`/admin/events/${event.id}/attendees`)}
+                        >
+                          <Users className="size-4" aria-hidden="true" />
+                        </Button>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="icon-sm"
+                          className="border-slate-200 bg-white text-slate-700"
                           aria-label={`Edit ${event.title}`}
                           onClick={() => router.push(`/admin/events/${event.id}/edit`)}
                         >
@@ -236,7 +249,7 @@ export function EventsDashboardClient() {
                           size="icon-sm"
                           aria-label={`Delete ${event.title}`}
                           disabled={deletingId === event.id}
-                          onClick={() => void handleDelete(event)}
+                          onClick={() => setPendingDelete(event)}
                         >
                           <Trash2 className="size-4" aria-hidden="true" />
                         </Button>
@@ -275,6 +288,52 @@ export function EventsDashboardClient() {
           </div>
         </div>
       </section>
+
+      {pendingDelete ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 px-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="delete-event-title"
+        >
+          <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
+            <div className="flex items-start gap-3">
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-rose-100 text-rose-700">
+                <Trash2 className="size-5" aria-hidden="true" />
+              </span>
+              <div>
+                <h2 id="delete-event-title" className="text-lg font-semibold text-slate-950">
+                  Delete event?
+                </h2>
+                <p className="mt-2 text-sm leading-6 text-slate-600">
+                  This will permanently delete <span className="font-semibold text-slate-950">{pendingDelete.title}</span>.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+              <Button
+                type="button"
+                variant="outline"
+                className="border-slate-200 bg-white"
+                disabled={deletingId === pendingDelete.id}
+                onClick={() => setPendingDelete(null)}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="button"
+                variant="destructive"
+                disabled={deletingId === pendingDelete.id}
+                onClick={() => void handleDelete(pendingDelete)}
+              >
+                <Trash2 className="size-4" aria-hidden="true" />
+                {deletingId === pendingDelete.id ? "Deleting..." : "Delete event"}
+              </Button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </>
   )
 }
