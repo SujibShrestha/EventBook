@@ -7,7 +7,11 @@ import { promoteWaitlist } from "../lib/waitlist.js";
 const isUniqueViolation = (err: unknown): boolean =>
   typeof err === "object" && err !== null && (err as { code?: string }).code === "P2002";
 
-export const bookSeat = async (userId: string, eventId: string) => {
+export const bookSeat = async (userId: string, userRole: "USER" | "ADMIN", eventId: string) => {
+  if (userRole === "ADMIN") {
+    throw new AppError(403, "FORBIDDEN", "Admins cannot book seats");
+  }
+
   try {
     return await prisma.$transaction(async (tx) => {
       // 1. Lock first, so nothing below can race with another request

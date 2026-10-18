@@ -13,8 +13,6 @@ type EventDetailsPageProps = {
   }>
 }
 
-const CURRENT_TIME = new Date("2026-10-17T00:00:00+05:45").getTime()
-
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("en", {
     weekday: "long",
@@ -64,7 +62,7 @@ export default async function EventDetailsPage({ params }: EventDetailsPageProps
   }
 
   const startsAt = new Date(event.startsAt)
-  const eventStarted = startsAt.getTime() <= CURRENT_TIME
+  const eventStarted = startsAt.getTime() <= Date.now()
 
   return (
     <>

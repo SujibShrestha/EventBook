@@ -8,7 +8,7 @@ export const createBooking = async (req: Request, res: Response) => {
   if (!eventId || Array.isArray(eventId)) {
     throw new AppError(400, "MISSING_EVENT_ID", "Event ID is required");
   }
-  const booking = await bookSeat(req.user.id, eventId);
+  const booking = await bookSeat(req.user.id, req.user.role, eventId);
   res.status(201).json({ booking });
 };
 

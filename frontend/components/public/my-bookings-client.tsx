@@ -15,8 +15,6 @@ import { getApiErrorMessage } from "@/src/lib/api-error"
 
 type BookingFilter = "active" | "past"
 
-const CURRENT_TIME = new Date("2026-10-17T00:00:00+05:45").getTime()
-
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("en", {
     weekday: "short",
@@ -28,7 +26,7 @@ function formatDate(value: string) {
 }
 
 function isActiveBooking(booking: MyBooking) {
-  return booking.status !== "CANCELLED" && new Date(booking.event.startsAt).getTime() > CURRENT_TIME
+  return booking.status !== "CANCELLED" && new Date(booking.event.startsAt).getTime() > Date.now()
 }
 
 function statusClass(status: MyBooking["status"]) {

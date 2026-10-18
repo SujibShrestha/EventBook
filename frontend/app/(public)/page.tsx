@@ -13,8 +13,6 @@ type HomePageProps = {
   }>
 }
 
-const CURRENT_TIME = new Date("2026-10-17T00:00:00+05:45").getTime()
-
 function parsePage(value: string | undefined) {
   const page = Number(value)
 
@@ -47,7 +45,9 @@ function eventMatchesQuery(event: PublicEvent, query: string) {
 
 async function getEvents(page: number) {
   try {
-    return await listPublicEvents(page, 9)
+    const data = await listPublicEvents(page, 9)
+
+    return { ...data, hasError: false }
   } catch {
     return {
       events: [],
@@ -57,6 +57,7 @@ async function getEvents(page: number) {
         total: 0,
         totalPages: 1,
       },
+      hasError: true,
     }
   }
 }
@@ -73,7 +74,7 @@ function buildPageHref(page: number, query: string) {
 }
 
 function EventCard({ event }: { event: PublicEvent }) {
-  const isUpcoming = new Date(event.startsAt).getTime() > CURRENT_TIME
+  const isUpcoming = new Date(event.startsAt).getTime() > Date.now()
 
   return (
     <article className="group flex min-h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
@@ -130,7 +131,7 @@ export default async function Home({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams
   const page = parsePage(resolvedSearchParams.page)
   const query = resolvedSearchParams.q?.trim() ?? ""
-  const { events, pagination } = await getEvents(page)
+  const { events, pagination, hasError } = await getEvents(page)
   const visibleEvents = events.filter((event) => eventMatchesQuery(event, query))
 
   return (
@@ -188,7 +189,17 @@ export default async function Home({ searchParams }: HomePageProps) {
           ) : null}
         </div>
 
-        {visibleEvents.length > 0 ? (
+        {hasError ? (
+          <div className="rounded-xl border border-rose-200 bg-white px-6 py-16 text-center shadow-sm">
+            <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-rose-50 text-rose-700">
+              <Search className="size-6" aria-hidden="true" />
+            </div>
+            <h2 className="mt-4 text-xl font-semibold text-slate-950">Unable to load events</h2>
+            <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-600">
+              Please check the API connection and try refreshing the page.
+            </p>
+          </div>
+        ) : visibleEvents.length > 0 ? (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {visibleEvents.map((event) => (
               <EventCard key={event.id} event={event} />
