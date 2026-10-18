@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { connection } from "next/server"
 import { ArrowRight, CalendarDays, MapPin, Search } from "lucide-react"
 
 import { listPublicEvents, type PublicEvent } from "@/src/lib/events-api"
@@ -124,6 +125,8 @@ function EventCard({ event }: { event: PublicEvent }) {
 }
 
 export default async function Home({ searchParams }: HomePageProps) {
+  await connection()
+
   const resolvedSearchParams = await searchParams
   const page = parsePage(resolvedSearchParams.page)
   const query = resolvedSearchParams.q?.trim() ?? ""
